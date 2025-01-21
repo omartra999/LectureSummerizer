@@ -65,10 +65,10 @@ class AudioManager():
         """
         print(input_path)
         try:
-
+            print("cuting the audio to parts....")
             # File info
             audio = AudioSegment.from_file(file= input_path)
-            print("cuting the audio to parts")
+
             file_name = os.path.basename(input_path).split(".")[0]
             file_size = os.path.getsize(input_path)
             file_size_mb = file_size / (1024 * 1024)
@@ -83,7 +83,7 @@ class AudioManager():
             os.makedirs(output_dir, exist_ok=True)
             parts = []
             for i in range(num_parts):
-                print(f"working on part {i}")
+                print(f"working on part {i + 1}....")
                 start_time = i * part_duration
                 end_time = min((i + 1) * part_duration, duration_ms)
                 part = audio[start_time:end_time]
